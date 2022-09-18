@@ -1,33 +1,31 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { useAppStore, type User } from "./stores/counter";
+// import 
 import HelloWorld from "./components/HelloWorld.vue";
-import { ref } from 'vue'
-import type { TabsPaneContext } from 'element-plus'
-import { useRouter, useRoute } from 'vue-router'
+import { computed, ref, watch } from 'vue';
+import type { TabsPaneContext } from 'element-plus';
+import { useRouter, useRoute } from 'vue-router';
+import Modal from "@/components/modal/Modal.vue";
+import { storeToRefs } from 'pinia';
+import TodoList from "./components/todos/TodoList.vue";
+import UserForm from "./components/users/UserForm.vue";
 
 const router = useRouter();
-// const route = useRoute();
-const currentRoute = ref('users');
-// const radio1 = ref('New York');
-// const radio2 = ref('New York');
-// const radio3 = ref('New York');
+const appStore = useAppStore();
+const {modalType, userTodos, selectedUser} = storeToRefs(appStore);
+const route = useRoute();
+const currentRouteName = ref('users');
+
 
 const changeRoute = (value: string) => {
   router.push(`/${value}`);
-  // switch (value) {
-  //   case 'users':
-  //   // currentRoute.
-  //     router.push('/users');
-  //     break;
-
-  //   case 'payments':
-  //     router.push('/payments');
-  //     break;
-
-  //   default:
-  //     break;
-  // }
 }
+
+watch(() => route.name, () => {
+  const routeName: string = route.name ? route.name.toString() : '';
+  currentRouteName.value !== routeName && (currentRouteName.value = routeName);
+});
 
 const handleClick = (event: any, name: any) => {
   console.log('it runs')
@@ -45,7 +43,7 @@ const handleClick = (event: any, name: any) => {
       <!-- <header> -->
 
       <nav>
-        <el-radio-group v-model="currentRoute" @change="changeRoute">
+        <el-radio-group v-model="currentRouteName" @change="changeRoute">
           <el-radio-button label="users"></el-radio-button>
           <el-radio-button label="payments"></el-radio-button>
         </el-radio-group>
@@ -59,6 +57,16 @@ const handleClick = (event: any, name: any) => {
       </el-card>
      
     </main>
+    <Modal>
+      <template #header>
+        <h3>{{modalType}}</h3>
+      </template>
+      <template #body>
+        <TodoList v-if="modalType === 'Todo List'" :todos="userTodos"/>
+        <UserForm  v-if="modalType === 'User Editing'"/>
+        <!-- <PaymentInfo v-if="modalType === 'Payment Info'"> -->
+      </template>
+    </Modal>
   <!-- </div> -->
 
   <!-- </el-container> -->

@@ -2,7 +2,7 @@
 import type { Todo } from '@/stores/counter';
 
 interface TodoListProps {
-    users: Todo[]
+    todos: Todo[]
 }
 </script>
     
@@ -14,12 +14,13 @@ defineProps<TodoListProps>();
             
 <template>
     <div class="todo-list">
-        <TodoItem v-for="todo in todos" :user="user" :key="user.id" />
+        <TodoItem v-for="todo in todos" :todo="todo" :key="todo.id" />
     </div>
 </template>
             
 <style scoped>
-.user-list {
+.todo-list {
+    padding: 20px;
     display: flex;
     flex-flow: column nowrap;
     gap: 20px;

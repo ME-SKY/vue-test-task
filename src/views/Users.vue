@@ -1,18 +1,27 @@
 <script setup lang="ts">
 import UserList from '@/components/users/UserList.vue';
 import { useAppStore } from '@/stores/counter';
+import { storeToRefs } from 'pinia';
+import { onMounted } from 'vue';
+
+
 
 // defineProps<{
 //     msg: string;
 // }>();
 
 const appStore = useAppStore(); 
-const {users} = appStore;
+const {users} = storeToRefs(appStore);
+// const {setModalType} = appStore;
+
+// onMounted(() => {
+//   setModalType('Todo')
+// })
 
 // console.log('appStoreiS', appStore);
 
 
-const items = [1,2,3,4,5]
+// const items = [1,2,3,4,5]
 </script>
     
 <template>

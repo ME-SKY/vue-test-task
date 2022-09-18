@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import { useAppStore } from '@/stores/counter';
+import { onMounted } from 'vue';
+// import { storeToRefs } from 'pinia';
 
 const appStore = useAppStore();
+
+const {setModalType} = appStore;
+
+onMounted(() => {
+    setModalType('Payment Info')
+});
+
 
 </script>
     
