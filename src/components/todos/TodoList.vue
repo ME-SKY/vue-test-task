@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { Todo } from '@/stores/counter';
+import type { Todo } from '@/stores/app';
 
 interface TodoListProps {
     todos: Todo[]

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { User } from '@/stores/counter';
+import type { User } from '@/stores/app';
 import {
     EditPen,
     List
@@ -7,7 +7,7 @@ import {
 import Modal from '@/components/modal/Modal.vue';
 import TodoList from '../todos/TodoList.vue';
 import { ref, onMounted } from 'vue';
-import {useAppStore} from '@/stores/counter'
+import {useAppStore} from '@/stores/app'
 
 interface UserProps {
     user: User

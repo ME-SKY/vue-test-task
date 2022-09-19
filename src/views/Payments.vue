@@ -1,29 +1,25 @@
 <script setup lang="ts">
-import { useAppStore } from '@/stores/counter';
+import { useAppStore } from '@/stores/app';
 import { onMounted } from 'vue';
-// import { storeToRefs } from 'pinia';
+import { storeToRefs } from 'pinia';
 
 const appStore = useAppStore();
-
+const {payments} = storeToRefs(appStore);
 const {setModalType} = appStore;
 
+
 onMounted(() => {
-    setModalType('Payment Info')
+    // storeToRefs('')
+    setModalType('Payment Info');
 });
 
 
 </script>
     
 <template>
-    <div class="greetings">
-        <!-- <h1 class="green">{{ msg }}</h1> -->
-        <h3>
-            You’ve successfully created a project with
-            <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-            <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-            What's next?
-        </h3>
-    </div>
+    <section class="payments">
+        <PaymentsList :payments="payments" />
+    </section>
 </template>
     
 <style scoped>

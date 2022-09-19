@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { User } from '@/stores/counter';
+import type { User } from '@/stores/app';
 
 interface UserListProps {
     users: User[]

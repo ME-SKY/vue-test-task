@@ -1,13 +1,5 @@
 <script lang="ts">
-import type { Todo } from '@/stores/counter';
-import {
-
-    EditPen,
-    List
-} from '@element-plus/icons-vue'
-// import Modal from '@/components/modal/Modal.Vue';
-import TodoList from '../todos/TodoList.vue';
-import { ref } from 'vue'
+import type { Todo } from '@/stores/app';
 
 interface TodoItemProps {
     todo: Todo
@@ -16,12 +8,6 @@ interface TodoItemProps {
         
 <script setup lang="ts">
 defineProps<TodoItemProps>();
-
-
-
-
-
-// const showModal = ref(false)
 
 </script>
                 

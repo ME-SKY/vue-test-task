@@ -2,7 +2,7 @@
 import {
     Close
 } from '@element-plus/icons-vue';
-import { useAppStore } from '@/stores/counter';
+import { useAppStore } from '@/stores/app';
 import { storeToRefs } from 'pinia';
 
 const appStore = useAppStore();
@@ -18,7 +18,8 @@ const {closeModal} = appStore;
 
 <template>
     <Teleport to="body">
-        <div v-if="modalIsActive" class="modal-mask">
+        <Transition name="modal" >
+            <div v-if="modalIsActive" class="modal-mask">
                 <div class="modal-wrapper">
                     <div class="modal-container">
                         <div class="modal-header">
@@ -36,6 +37,8 @@ const {closeModal} = appStore;
                     </div>
                 </div>
             </div>
+        </Transition>
+        
     </Teleport>    
     <!-- <modal :show="showModal" @close="showModal = false">
                 <template #header>
@@ -85,6 +88,25 @@ const {closeModal} = appStore;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.modal-enter-from {
+  opacity: 0;
+}
+
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-active,
+.modal-leave-active{
+    transition: opacity transform 0.6s ease;
+}
+
+.modal-enter-from .modal-container,
+.modal-leave-to .modal-container {
+  /* -webkit-transform: scale(1.1); */
+  transform: scale(1.1);
 }
 
 /* .modal-title{
