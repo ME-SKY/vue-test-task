@@ -18,7 +18,7 @@ defineProps<TodoListProps>();
     </div>
 </template>
             
-<style scoped>
+<style scoped lang="scss">
 .todo-list {
     padding: 20px;
     display: flex;

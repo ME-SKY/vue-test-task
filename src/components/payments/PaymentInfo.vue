@@ -1,8 +1,4 @@
 <script lang="ts">
-import type { Payment } from '@/stores/app';
-import {
-    InfoFilled
-} from '@element-plus/icons-vue';
 import { useAppStore } from '@/stores/app';
 import { storeToRefs } from 'pinia';
 
@@ -10,14 +6,7 @@ import { storeToRefs } from 'pinia';
                 
 <script setup lang="ts">
 const appStore = useAppStore();
-// const { openModal, selectPayment } = appStore;
-const {selectedPayment} = storeToRefs(appStore);
-// const {}
-
-// const showInfo = () => {
-//     selectPayment(payment);
-//     openModal()
-// }
+const { selectedPayment } = storeToRefs(appStore);
 
 </script>
                         
@@ -52,15 +41,10 @@ const {selectedPayment} = storeToRefs(appStore);
                 Date: {{selectedPayment.datetime.toDateString()}}
             </span>
         </div>
-
-        <!-- <div class="payment-actions">
-            <el-button :icon="InfoFilled" @click="showInfo()">
-            </el-button>
-        </div> -->
     </div>
 </template>
                         
-<style scoped>
+<style scoped lang="scss">
 .payment {
     display: flex;
     flex-flow: row nowrap;
@@ -68,10 +52,10 @@ const {selectedPayment} = storeToRefs(appStore);
     height: 50px;
     border: 1px solid rgba(1, 3, 3, 0.2);
     border-radius: 5px;
-}
 
-.payment-actions {
-    margin-left: auto;
-    margin-right: 20px;
+    .payment-actions {
+        margin-left: auto;
+        margin-right: 20px;
+    }
 }
 </style>  

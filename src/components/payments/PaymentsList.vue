@@ -18,7 +18,7 @@ defineProps<PaymentsListProps>();
     </div>
 </template>
                 
-<style scoped>
+<style scoped lang="scss">
 .payment-list {
     display: flex;
     flex-flow: column nowrap;

@@ -23,10 +23,10 @@ export default defineConfig({
   css: {
     // https://vitejs.dev/config/#css-preprocessoroptions
     preprocessorOptions: {
-      sass: {
+      scss: {
         additionalData: [
           // vuetify variable overrides
-          '@import "@/styles/variables.scss"',
+          '@use "@/styles/shared";',
           '',
         ].join('\n'),
       },

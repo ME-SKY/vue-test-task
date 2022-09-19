@@ -29,32 +29,25 @@ watch(() => route.name, () => {
 
 <template>
 
-  <Transition appear name="appear" >
+  <Transition appear name="appear">
     <header>
-    <nav>
-      <el-radio-group v-model="currentRouteName" @change="changeRoute">
-        <el-radio-button label="users"></el-radio-button>
-        <el-radio-button label="payments"></el-radio-button>
-      </el-radio-group>
-    </nav>
-  </header>
+      <nav>
+        <el-radio-group v-model="currentRouteName" @change="changeRoute">
+          <el-radio-button label="users"></el-radio-button>
+          <el-radio-button label="payments"></el-radio-button>
+        </el-radio-group>
+      </nav>
+    </header>
   </Transition>
-  
 
-  <Transition appear name="appear" >
 
+  <Transition appear name="appear">
     <main>
-    <el-card class="main-card">
-      <RouterView />
-    </el-card>
-  </main>
+      <el-card class="main-card">
+        <RouterView />
+      </el-card>
+    </main>
   </Transition>
-
-
-  <Transition appear name="appear" >
-
-  </Transition>
-  
 
   <Modal>
     <template #header>
@@ -63,17 +56,12 @@ watch(() => route.name, () => {
     <template #body>
       <TodoList v-if="modalType === 'Todo List'" :todos="userTodos" />
       <UserForm v-if="modalType === 'User Editing'" />
-      <PaymentInfo v-if="modalType === 'Payment Info'"/>
+      <PaymentInfo v-if="modalType === 'Payment Info'" />
     </template>
   </Modal>
-
-
-
-
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -91,10 +79,6 @@ nav {
 
 nav .el-radio-group {
   flex-wrap: nowrap;
-}
-
-nav span.el-radio-button__inner {
-  background: violet;
 }
 
 .main-card {
@@ -128,5 +112,4 @@ main {
 .appear-leave-to {
   opacity: 0;
 }
-
 </style>
