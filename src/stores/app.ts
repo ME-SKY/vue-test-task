@@ -47,12 +47,10 @@ const usersList: User[] = Array.from({ length: 30 }, (_, index) => index + 1).ma
 
 const paymentsList: Payment[] = Array.from({ length: usersList.length }, (_, index) => index + 1).map((id) => 
 {
-  const [first, second] = [faker.datatype.number({ min: 1, max: usersList.length }), faker.datatype.number({ min: 1, max: usersList.length })];
-  console.log(first, second);
+  const [firstUserId, secondUserId] = [faker.datatype.number({ min: 1, max: usersList.length }), faker.datatype.number({ min: 1, max: usersList.length })];
   
-  const payer =  usersList.find(user => user.id === first) as User;
-  const reciever = usersList.find(user => user.id === second) as User;
-  console.log(payer, reciever);
+  const payer =  usersList.find(user => user.id === firstUserId) as User;
+  const reciever = usersList.find(user => user.id === secondUserId) as User;
   
 return {
   id,
